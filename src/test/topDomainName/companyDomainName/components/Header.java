@@ -17,8 +17,8 @@ public abstract class Header<Page> extends BasePage<Page> {
     @Step("Logout and go back LoginPage")
     public LoginPage logout() {
         // User navigation
-        $(".nav-user").click();
-        $("a[href='http://cloudadviser.ru/logout']").click();
+        $("").click();
+        $("").click();
         this.screenshotEntryPage();
         return Selenide.page(LoginPage.class);
     }
