@@ -1,4 +1,4 @@
-package top-domen-name.company-domen-name.common;
+package topDomainName.companyDomenName.common;
 
 import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.WebDriverRunner;
