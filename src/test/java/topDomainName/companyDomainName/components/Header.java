@@ -1,4 +1,4 @@
-package topDomainName.companyDomenName.components;
+package topDomainName.companyDomainName.components;
 
 import com.codeborne.selenide.Selenide;
 import topDomainName.companyDomainName.common.BasePage;
@@ -22,4 +22,6 @@ public abstract class Header<Page> extends BasePage<Page> {
         this.screenshotEntryPage();
         return Selenide.page(LoginPage.class);
     }
+
+
 }

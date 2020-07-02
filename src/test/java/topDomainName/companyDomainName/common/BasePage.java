@@ -51,4 +51,20 @@ public abstract class BasePage<Page> extends SelenidePageFactory {
             throw new RuntimeException(e);
         }
     }
+
+    @Attachment(type = "video/mp4")
+    private byte[] video() {
+        File file = Screenshots.takeScreenShotAsFile();
+        
+        try {
+            BufferedImage image = ImageIO.read(file);
+            ByteArrayOutputStream arrayOs = new ByteArrayOutputStream();
+            BufferedOutputStream os = new BufferedOutputStream(arrayOs);
+            image.flush();
+            ImageIO.write(image, "png", os);
+            return arrayOs.toByteArray();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
