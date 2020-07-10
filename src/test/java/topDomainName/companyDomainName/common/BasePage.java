@@ -1,4 +1,4 @@
-package topDomainName.companyDomenName.common;
+package topDomainName.companyDomainName.common;
 
 import com.codeborne.selenide.Screenshots;
 import com.codeborne.selenide.WebDriverRunner;
@@ -18,7 +18,9 @@ import java.io.IOException;
  *
  * Extends from this class! ^^ 
  * Example:
- * public class LoginPage extends BasePage<LoginPage> { // Greetings, my friend! Implement the methods that you need here! }
+ * public class LoginPage extends BasePage<LoginPage> { 
+        // Greetings, my friend! Implement the methods that you need here! 
+ * }
  * <br/>
  */
 
@@ -52,6 +54,7 @@ public abstract class BasePage<Page> extends SelenidePageFactory {
         }
     }
 
+    // TODO: realize hook failing test and restarting test vith video recording
     @Attachment(type = "video/mp4")
     private byte[] video() {
         File file = Screenshots.takeScreenShotAsFile();

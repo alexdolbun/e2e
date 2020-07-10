@@ -1,0 +1,36 @@
+FROM openjdk:8
+
+
+# Download and install Gradle
+WORKDIR /usr/bin
+ENV GRADLE_VER=5.4.1
+#download and unzip the file
+#after extracting file contents create a symbolic link so that the lengthy folder
+#name is reduced to a shorter folder called gradle5
+#then remove the file from container
+
+RUN wget https://services.gradle.org/distributions/gradle-$GRADLE_VER-all.zip && \
+    unzip gradle-$GRADLE_VER-all.zip && \
+    ln -s gradle-$GRADLE_VER gradle5 && \
+    rm gradle-$GRADLE_VER-all.zip
+
+# Set Appropriate Environmental Variables
+ENV GRADLE_HOME /usr/bin/gradle5
+ENV PATH $PATH:$GRADLE_HOME/bin
+
+####
+
+ENV APP_HOME=/usr/app/ 
+WORKDIR $APP_HOME
+
+
+COPY build.gradle webdriver.gradle gradlew gradlew.bat   $APP_HOME
+ENV ARTIFACT_NAME=sample-test.jar
+
+RUN gradle build || return 0 
+
+
+COPY ./testng_entrypoint.sh .
+ENTRYPOINT ["./testng_entrypoint.sh"]
+#EXPOSE 8080
+#CMD ["java","-jar",$ARTIFACT_NAME]
